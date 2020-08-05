@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
+  }
+
+  /**
+   * It doesn't reload our page, it does the same as if we clicked a routerLink
+   * but with this router navigate method, we are able to trigger this programmatically, so triggeer this in our code.
+   */
+  onLoadServers() {
+    // complex calculation
+    this.router.navigate(['/servers']);
   }
 
 }
