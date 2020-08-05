@@ -2,10 +2,29 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a routerLink="/">Home</a></li>
-        <li role="presentation"><a routerLink="servers">Servers</a></li>
+        <!--
+        exact is a kind of a reserved property on this object i passed to routerLink active options
+        an this will now basically tell Angular only add this routerLink active class,
+        so this active CSS class in this case, if the exact, the full path is well whatever does link leads to,
+        so only if everything is just slash and not if it is only part of the path. So with this in place,
+        now i see it still is marked as active on the empty path, at the starting page but if i go to /servers,
+        now only servers is marked as active because now we fixed this, we change the default behavior
+        to mkae sure we only mark this if the full path is whatever we have on our routerLink.
+       -->
+        <li role="presentation"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">
+          <a routerLink="/">Home</a>
+        </li>
+        <li role="presentation"
+            routerLinkActive="active">
+          <a routerLink="servers">Servers</a>
+        </li>
         <!-- To be precise: Property binding was used before, too, but now e bind to some non-string data!  -->
-        <li role="presentation"><a [routerLink]="['users']">Users</a></li>
+        <li role="presentation"
+            routerLinkActive="active">
+          <a [routerLink]="['users']">Users</a>
+        </li>
       </ul>
     </div>
   </div>
