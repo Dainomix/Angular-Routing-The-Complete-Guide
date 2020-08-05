@@ -10,6 +10,14 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
+    <!-- Relative Path: always append the path you specify in the routerLink to the end of your current path
+         e.g routerLink="servers" will result in .../serversservers
+             routerLink="./servers" will result in .../serversservers
+             routerLink="../servers" will result in .../servers -->
+    <!-- <a routerLink="servers">Reload Pages</a> -->
+    <!-- Absolute Path: Absolute path with a slash at the beginning which will always get appended to the root domain
+         e.g routerLink="/servers" will result in .../servers  -->
+    <!-- <a routerLink="/servers">Reload Page</a> -->
     <app-edit-server></app-edit-server>
     <hr>
     <app-server></app-server>
