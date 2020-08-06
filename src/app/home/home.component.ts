@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
    * It doesn't reload our page, it does the same as if we clicked a routerLink
    * but with this router navigate method, we are able to trigger this programmatically, so triggeer this in our code.
    */
-  onLoadServers() {
+  onLoadServer(id:number) {
     // complex calculation
-    this.router.navigate(['/servers']);
+    this.router.navigate(['/servers', id, 'edit'], {queryParams: {allowEdit: '1'}, fragment: 'loading'});
   }
 
 }
