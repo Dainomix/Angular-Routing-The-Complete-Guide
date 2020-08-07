@@ -22,10 +22,11 @@
          e.g routerLink="/servers" will result in .../servers  -->
     <!-- <a routerLink="/servers">Reload Page</a> -->
 
-    <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
-
+    <!-- This onw adds a new hook which will e used on all child routes of the route being loaded on the servers -->
+    <router-outlet></router-outlet>
+    <!-- <button class="btn btn-primary" (click)="onReload()">Reload Page</button>
     <app-edit-server></app-edit-server>
-    <hr>
+    <hr> -->
     <!-- <app-server></app-server> -->
   </div>
 </div>
