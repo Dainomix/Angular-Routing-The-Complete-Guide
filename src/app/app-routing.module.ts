@@ -18,7 +18,9 @@ const appRoutes: Routes = [
     // make sure that servers is now only accessible and all the child routes,
     // only accessible if the auth gaurd canActivated method returns true in the end
     // which will only happen if in the auth servicem loggedIn is set to true
-    { path: 'servers', canActivate: [AuthGuard], component: ServersComponent, children: [
+    { path: 'servers',
+      //canActivate: [AuthGuard]
+      canActivateChild: [AuthGuard], component: ServersComponent, children: [
       { path: ':id', component: ServerComponent },
       { path: ':id/edit', component: EditServerComponent },
     ]},
