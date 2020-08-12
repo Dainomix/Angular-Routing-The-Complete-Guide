@@ -21,6 +21,12 @@ export class ServersService {
     return this.servers;
   }
 
+  /**
+   * getServer(id) method will give us back a server
+   * - this clearly is some synchronous code
+   * - it will run instantly here
+   * - we will resolve this instantly by using server-resolver.service.ts
+   */
   getServer(id: number) {
     const server = this.servers.find(
       (s) => {
