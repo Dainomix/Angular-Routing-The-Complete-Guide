@@ -33,8 +33,45 @@ const appRoutes: Routes = [
     { path: '**', redirectTo: '/not-found'}
   ];
 
+/**
+ * 
+ * The server hosting your Angular single page application has to be configured such that in a case of a 404 error
+ * it returns the index.html file, so the file starting and containing your Angular app.
+ * Why?
+ * All our URLs are pared by the server first, so not by Angular, by the server
+ * 
+ * Now If i have /servers here, it will look for a /servers route on our server, on the real server hsoting our web app.
+ * Now chances are i don't have that route here because i only have one file there, index.html containing my Angular app
+ * and i want Angular to take over and to parse this route.
+ * but it will never get a chance, if our server, the server hosting our app decides no, i don't know the route, here's your 404 error page.
+ * 
+ * Therefore we need to make sure that in such a case, our web sever returns the index.html file.
+ * If for some reason, we can't get this to work or we need to support very old broswers which are not able to parse paths like this in the client
+ * which Angular does then, we have an alternative approach to using this nice URLs which look like all the URLs in the web.
+ * We can fallback to our older technique which was used a couple of years ago, using a hsh sign in our routes.
+ * 
+ * useHash default is true
+ * 
+ * After setting useHash true, it becomes hash mode routing
+ * Then URL become like localhost:4200/#/ , localhost:4200/#/server , localhost:4200/#/users
+ * 
+ * What the hashtag will do is, it informs our web server, 
+ * 'hey only care about the part in this URL 'localhost:4200' before the hashtag
+ * So all the parts thereafter will be ignored by our web server
+ * 
+ * Therefore this will run even on servers which don't return the index.html file in case of 404 errors
+ * because they will only care about the part in front of the hashtag.
+ * That's how it works by default and the part after the hashtag can now be pared by our client, by Angular.
+ * 
+ * if we cannot get the other approach to work, however i will say that definitely we should try to use
+ * the more prettier routes, using the HTML history mode as it is called with the normal slash routes without the hashtag
+ * 
+ * the other mode which gives us cleaner routes which really look a lot nicer and more like you're used to seeing routes from other web apps.
+ */
+
 @NgModule({
     imports: [
+        // RouterModule.forRoot(appRoutes, {useHash: true})
         RouterModule.forRoot(appRoutes)
     ],
     exports: [RouterModule]
